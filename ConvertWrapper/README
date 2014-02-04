@@ -1,0 +1,17 @@
+####### PacketLib Python wrapper
+
+1) Build
+
+make clean
+make
+
+2) Add library path to PYTHONPATH
+export PYTHONPATH=<path>/ConvertWrapper:$PYTHONPATH
+
+3) Usage
+
+In python:
+
+> import Convert_ext
+
+

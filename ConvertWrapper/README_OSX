@@ -1,0 +1,55 @@
+##################################
+#     MacPorts installation      #
+##################################
+
+#1. Boost and Python installation directory
+
+If Boost and Python are installed on Macports, these are the (probable) location directories you should use:
+PYTHON_INCLUDE = /opt/local/Library/Frameworks/Python.framework/Versions/2.7/include/python$(PYTHON_VERSION)
+PYTHON_LIB = /opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python$(PYTHON_VERSION)/config/
+ 
+# location of the Boost Python include files and library
+BOOST_INC = /opt/local/include/boost/python
+BOOST_LIB = /opt/local/lib
+
+# Boost Python library keyword (for Macports Boost installation use -lboost_python-mt)
+BOOST_PYTHON_LIB = -lboost_python-mt
+
+#2. Environment variables
+
+
+############################# BOOST 1.53.0
+export CPLUS_INCLUDE_PATH=/opt/local/include:/opt/local/include:$CPLUS_INCLUDE_PATH
+export C_INCLUDE_PATH=/opt/local/include:/opt/local/include:$C_INCLUDE_PATH
+export LD_LIBRARY_PATH=/opt/local/lib:$LD_LIBRARY_PATH
+
+############################ Python wrapper
+export PYTHONPATH=<path>/ConvertWrapper:$PYTHONPATH
+
+
+#3. Building
+
+make 
+
+#4. Add library path to PYTHONPATH
+export PYTHONPATH=<path>/PythonWrapper:$PYTHONPATH
+
+#5. Usage
+
+In python:
+
+> import Convert_ext
+
+
+
+
+
+
+
+
+
+
+
+
+
+
