@@ -30,7 +30,7 @@
  gl.plgal()
  ---------------------------------------------------------------------------------
  Modification history:
- - 2014/06/30: upper limits are plotted using the bugged lower limit of matplotlib errorbar instead of building arrows.
+ - 2014/08/20: creation date
  
 """
 
