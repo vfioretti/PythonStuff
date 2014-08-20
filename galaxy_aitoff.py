@@ -74,7 +74,7 @@ def plgal(title='', source_list='', square_list = '', ring_list='', vip_sources=
 			b_source.append(b_in)
 		ax.scatter(l_source, b_source, s=50)
 
-	# Loading the squares
+	# Loading the rings
 	if ring_list:
 		f_read = open(ring_list, 'r')
 		for line in f_read:
@@ -109,8 +109,6 @@ def plgal(title='', source_list='', square_list = '', ring_list='', vip_sources=
 
 
 if __name__ == '__main__':
-    # test1.py executed as script
-    # do something
     plgal()
     
     
