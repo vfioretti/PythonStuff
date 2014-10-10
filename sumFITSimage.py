@@ -9,7 +9,7 @@
 # email                : fioretti@iasfbo.inaf.it
 # ----------------------------------------------
 # Usage:
-# sumFITSimage.py <file1> <file2>
+# sumFITSimage.py <file1> <file2> <file_new>
 # ---------------------------------------------------------------------------------
 # Parameters (default = None):
 # - file1 = file name of the first file
@@ -17,7 +17,7 @@
 # - file_new = file name of new FITS file
 # ---------------------------------------------------------------------------------
 # Caveats:
-# None
+# The subtraction is file1 - file2
 # ---------------------------------------------------------------------------------
 # Modification history:
 # - 2014/10/10: creation date
