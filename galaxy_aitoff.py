@@ -116,7 +116,7 @@ def plgal(title='', source_list='', square_list = '', ring_list='', vip_sources=
 			l_in = convert_l(columns[0])
 			b_in = columns[1]
 			r_in = columns[2]
-			ax.add_artist(Circle(xy=((l_in)*deg2rad, (b_in)*deg2rad), facecolor=fc_ring, fill=f_ring, edgecolor='k', radius=r_in*deg2rad)) 
+			ax.add_artist(Circle(xy=((l_in)*deg2rad, (b_in)*deg2rad), facecolor=fc_ring, fill=f_ring, edgecolor='k', radius=r_in*deg2rad, zorder = 1)) 
 
 	# Loading the vip sources	
 	if vip_sources:
@@ -126,7 +126,7 @@ def plgal(title='', source_list='', square_list = '', ring_list='', vip_sources=
 		diamond_coord = [convert_l(86.1110374)*deg2rad, -38.1837815*deg2rad]
 		lcoord = [crab_coord[0], vela_coord[0], geminga_coord[0], diamond_coord[0]]
 		bcoord = [crab_coord[1], vela_coord[1], geminga_coord[1], diamond_coord[1]]
-		ax.scatter(lcoord, bcoord, color='r', marker='*', s=50)
+		ax.scatter(lcoord, bcoord, color='r', marker='*', s=50, zorder=2)
 		
 	# Make-up
 	plt.grid(True)
