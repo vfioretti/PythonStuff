@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-# fromGaltoRaDec.py  -  description
+# fromRaDectoGal.py  -  description
 # ---------------------------------------------------------------------------------
 # astronomical coordinates conversion
 # ---------------------------------------------------------------------------------
@@ -8,16 +8,21 @@
 # email                : fioretti@iasfbo.inaf.it
 # ----------------------------------------------
 # Usage:
-# fromGaltoRaDec.py  <l> <b>
+# fromRaDectoGal.py  <ra> <dec>
 # ---------------------------------------------------------------------------------
 # Parameters (default = None):
-# - l = galactic longitude in deg.
-# - b = galactic latitude in deg.
+# - ra: right ascension in hh mm ss
+# - dec: declination in deg m s
 # ---------------------------------------------------------------------------------
-# Caveats:
+# Usage:
+# J00040+7020 becomes "00 04 00" "+70 20 00"
+# > python fromRaDectoGal.py "00 04 00" "+70 20 00"
+# Output:
+# > l [deg.]:  118.928588067
+# > b [deg.]:  7.83127582313
 # ---------------------------------------------------------------------------------
 # Modification history:
-# - 2014/10/10: creation date
+# - 2015/07/02: creation date
  
 
 import astropy
@@ -27,8 +32,8 @@ import sys
 
 
 arg_list = sys.argv
-l_coord = float(arg_list[1])
-b_coord = float(arg_list[2])
+ra_coord = arg_list[1]
+dec_coord = arg_list[2]
 
 from astropy.coordinates import SkyCoord  # High-level coordinates
 from astropy.coordinates import ICRS, Galactic, FK4, FK5  # Low-level frames
@@ -36,10 +41,9 @@ from astropy.coordinates import Angle, Latitude, Longitude  # Angles
 import astropy.units as u
 
 
-c = SkyCoord(l_coord, b_coord, "galactic", unit="deg")
-c2 = c.transform_to(FK5(equinox='J2000'))
+c = SkyCoord(ra_coord, dec_coord, "fk5", unit=(u.hourangle, u.deg))
+c2 = c.galactic
 
-print "RA [deg.]: ", c2.ra.deg
-print "DEC [deg.]: ", c2.dec.deg
-print "RA [hms]: ", c2.ra.hms
-print "DEC [hms]: ", c2.dec.hms
+
+print "l [deg.]: ", c2.l.deg
+print "b [deg.]: ", c2.b.deg
