@@ -148,19 +148,28 @@ else:
 			for evid in xrange(len(data_column_all)):
 				row_data_column = data_column_all[evid]
 				tot_data_column.append(row_data_column[subfield_id-1])
-				if ((row_data_column[subfield_id-1] > minval) & (row_data_column[subfield_id-1] < maxval)):
-					data_column.append(row_data_column[subfield_id-1])
-					#square_data_column.append((row_data_column[subfield_id-1])**2.)
+				if (minval==0):
+					if (row_data_column[subfield_id-1] < maxval):
+						data_column.append(row_data_column[subfield_id-1])
+						#square_data_column.append((row_data_column[subfield_id-1])**2.)
+				else:
+					if ((row_data_column[subfield_id-1] > minval) & (row_data_column[subfield_id-1] < maxval)):
+						data_column.append(row_data_column[subfield_id-1])
+						#square_data_column.append((row_data_column[subfield_id-1])**2.)
 		# else if all the sub-array is taken
 		else:
 			for evid in xrange(len(data_column_all)):
 				row_data_column = data_column_all[evid]
 				for jcol in xrange(len(row_data_column)):
 					tot_data_column.append(row_data_column[jcol])
-					if ((row_data_column[jcol] > minval) & (row_data_column[jcol] < maxval)):
-						data_column.append(row_data_column[jcol])
-						#square_data_column.append((row_data_column[jcol])**2.)
-
+					if (minval==0):
+						if (row_data_column[jcol] < maxval):
+							data_column.append(row_data_column[jcol])
+							#square_data_column.append((row_data_column[jcol])**2.)
+					else:
+						if ((row_data_column[jcol] > minval) & (row_data_column[jcol] < maxval)):
+							data_column.append(row_data_column[jcol])
+							#square_data_column.append((row_data_column[jcol])**2.)					
 	# else if all PDM are taken
 	else:
 
@@ -181,9 +190,15 @@ else:
 				for evid in xrange(len(single_data_column_all)):
 					row_data_column = single_data_column_all[evid]
 					tot_single_data_column.append(row_data_column[subfield_id-1])
-					if ((row_data_column[subfield_id-1] > minval) & (row_data_column[subfield_id-1] < maxval)):
-						single_data_column.append(row_data_column[subfield_id-1])
-						#single_square_data_column.append((row_data_column[subfield_id-1])**2.)
+					if (minval==0):
+						if (row_data_column[subfield_id-1] < maxval):
+							single_data_column.append(row_data_column[subfield_id-1])
+							#single_square_data_column.append((row_data_column[subfield_id-1])**2.)
+					else:
+						if ((row_data_column[subfield_id-1] > minval) & (row_data_column[subfield_id-1] < maxval)):
+							single_data_column.append(row_data_column[subfield_id-1])
+							#single_square_data_column.append((row_data_column[subfield_id-1])**2.)
+												
 				for jev in xrange(len(single_data_column)):
 					data_column.append(single_data_column[jev])
 				for jev in xrange(len(tot_single_data_column)):
@@ -194,9 +209,14 @@ else:
 					row_data_column = single_data_column_all[evid]
 					for jcol in xrange(len(row_data_column)):
 						tot_single_data_column.append(row_data_column[jcol])
-						if ((row_data_column[jcol] > minval) & (row_data_column[jcol] < maxval)):
-							single_data_column.append(row_data_column[jcol])
-							#single_square_data_column.append((row_data_column[jcol])**2.)
+						if (minval==0):
+							if (row_data_column[jcol] < maxval):
+								single_data_column.append(row_data_column[jcol])
+								#single_square_data_column.append((row_data_column[jcol])**2.)
+						else:
+							if ((row_data_column[jcol] > minval) & (row_data_column[jcol] < maxval)):
+								single_data_column.append(row_data_column[jcol])
+								#single_square_data_column.append((row_data_column[jcol])**2.)						
 				for jev in xrange(len(single_data_column)):
 					data_column.append(single_data_column[jev])
 				for jev in xrange(len(tot_single_data_column)):	
