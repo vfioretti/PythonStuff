@@ -159,17 +159,29 @@ else:
 		# else if all the sub-array is taken
 		else:
 			for evid in xrange(len(data_column_all)):
-				row_data_column = data_column_all[evid]
-				for jcol in xrange(len(row_data_column)):
-					tot_data_column.append(row_data_column[jcol])
+				if (data_column_all[evid].size > 1):
+					row_data_column = data_column_all[evid]
+					for jcol in xrange(len(row_data_column)):
+						tot_data_column.append(row_data_column[jcol])
+						if (minval==0):
+							if (row_data_column[jcol] < maxval):
+								data_column.append(row_data_column[jcol])
+								#square_data_column.append((row_data_column[jcol])**2.)
+						else:
+							if ((row_data_column[jcol] > minval) & (row_data_column[jcol] < maxval)):
+								data_column.append(row_data_column[jcol])
+								#square_data_column.append((row_data_column[jcol])**2.)		
+				else:
+					row_data_column = data_column_all[evid]
+					tot_data_column.append(row_data_column)
 					if (minval==0):
-						if (row_data_column[jcol] < maxval):
-							data_column.append(row_data_column[jcol])
+						if (row_data_column < maxval):
+							data_column.append(row_data_column)
 							#square_data_column.append((row_data_column[jcol])**2.)
 					else:
-						if ((row_data_column[jcol] > minval) & (row_data_column[jcol] < maxval)):
-							data_column.append(row_data_column[jcol])
-							#square_data_column.append((row_data_column[jcol])**2.)					
+						if ((row_data_column > minval) & (row_data_column < maxval)):
+							data_column.append(row_data_column)
+							#square_data_column.append((row_data_column[jcol])**2.)								
 	# else if all PDM are taken
 	else:
 
@@ -206,17 +218,29 @@ else:
 							
 			else:
 				for evid in xrange(len(single_data_column_all)):
-					row_data_column = single_data_column_all[evid]
-					for jcol in xrange(len(row_data_column)):
-						tot_single_data_column.append(row_data_column[jcol])
+					if (single_data_column_all[evid].size > 1):
+						row_data_column = single_data_column_all[evid]
+						for jcol in xrange(len(row_data_column)):
+							tot_single_data_column.append(row_data_column[jcol])
+							if (minval==0):
+								if (row_data_column[jcol] < maxval):
+									single_data_column.append(row_data_column[jcol])
+									#single_square_data_column.append((row_data_column[jcol])**2.)
+							else:
+								if ((row_data_column[jcol] > minval) & (row_data_column[jcol] < maxval)):
+									single_data_column.append(row_data_column[jcol])
+									#single_square_data_column.append((row_data_column[jcol])**2.)
+					else:
+						row_data_column = single_data_column_all[evid]
+						tot_single_data_column.append(row_data_column)
 						if (minval==0):
-							if (row_data_column[jcol] < maxval):
-								single_data_column.append(row_data_column[jcol])
+							if (row_data_column < maxval):
+								single_data_column.append(row_data_column)
 								#single_square_data_column.append((row_data_column[jcol])**2.)
 						else:
-							if ((row_data_column[jcol] > minval) & (row_data_column[jcol] < maxval)):
-								single_data_column.append(row_data_column[jcol])
-								#single_square_data_column.append((row_data_column[jcol])**2.)						
+							if ((row_data_column > minval) & (row_data_column < maxval)):
+								single_data_column.append(row_data_column)
+								#single_square_data_column.append((row_data_column[jcol])**2.)												
 				for jev in xrange(len(single_data_column)):
 					data_column.append(single_data_column[jev])
 				for jev in xrange(len(tot_single_data_column)):	
@@ -252,9 +276,9 @@ else:
 	#rms_out = np.sqrt((1./N_entries)*np.sum(square_data_column))
 	sd_out = np.std(data_column)
 	
-	plt.text(0.6, 0.8, 'Entries = '+str(N_entries), transform=ax.transAxes, fontsize=12)
-	plt.text(0.6, 0.75, 'Mean = '+str(round(mean_out, 1)), transform=ax.transAxes, fontsize=12)
-	plt.text(0.6, 0.7, 'RMS = '+str(round(sd_out, 1)), transform=ax.transAxes, fontsize=12)
+	plt.text(0.6, 0.8, 'Entries = '+str(N_entries), transform=ax.transAxes, fontsize=12, zorder=100)
+	plt.text(0.6, 0.75, 'Mean = '+str(round(mean_out, 1)), transform=ax.transAxes, fontsize=12, zorder=100)
+	plt.text(0.6, 0.7, 'RMS = '+str(round(sd_out, 1)), transform=ax.transAxes, fontsize=12, zorder=100)
 
 	ax.set_xlabel(xlabel)
 	ax.set_ylabel(ylabel)
