@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-# sumFITSimage.py  -  description
+# divFITSimage.py  -  description
 # ---------------------------------------------------------------------------------
 # summing the pixels of two images and save the output in a new FITS file
 # with the same extension of one of the files
@@ -17,6 +17,7 @@
 # - file_new = file name of new FITS file
 # ---------------------------------------------------------------------------------
 # Caveats:
+# The subtraction is file1 - file2
 # ---------------------------------------------------------------------------------
 # Modification history:
 # - 2014/10/10: creation date
@@ -60,7 +61,7 @@ for irow in xrange(naxis1_file1):
 	row_image2 = image2[irow]
 	row_image_new = []
 	for jcol in xrange(naxis2_file1): 
-		row_image_new.append(row_image1[jcol] + row_image2[jcol])
+		row_image_new.append(row_image1[jcol] - row_image2[jcol])
 	image_new[irow] = row_image_new
 
 
