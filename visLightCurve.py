@@ -119,35 +119,10 @@ for jlc in xrange(N_lc):
     ax_lc.errorbar(t_center_lc, flux_lc, xerr=(t_bin_lc)/2., yerr=err_flux_lc, marker='o', fmt=color_lc, linestyle='None', elinewidth=1., capsize=0)
 
     yrange = ax_lc.get_ylim()
-    print yrange
     err_flux_lc[where_upper] = (yrange[1] - yrange[0])/20.
 
     ax_lc.errorbar(t_center_lc, flux_lc, xerr=(t_bin_lc)/2., yerr=err_flux_lc, uplims=uplims, fmt=color_lc, linestyle='None', elinewidth=1., capsize=0)
 
-"""
-    if (where_noupper_zero.size):
-       flux_lc_noupper = flux_lc[where_noupper]        
-       err_flux_lc_noupper = err_flux_lc[where_noupper]
-       err_type_lc_noupper = err_type_lc[where_noupper]
-       t_center_lc_noupper = t_center_lc[where_noupper]
-       t_bin_lc_noupper = t_bin_lc[where_noupper]
-       ax_lc.errorbar(t_center_lc_noupper, flux_lc_noupper, xerr=(t_bin_lc_noupper)/2., yerr=err_flux_lc_noupper, fmt=color_lc, linestyle='None', elinewidth=1, capsize=0)
-
-    if (where_upper_zero.size):        
-       flux_lc_upper = flux_lc[where_upper]
-       err_flux_lc_upper = err_flux_lc[where_upper]
-       err_type_lc_upper = err_type_lc[where_upper]
-       t_center_lc_upper = t_center_lc[where_upper]
-       t_bin_lc_upper = t_bin_lc[where_upper]    
-       ax_lc.errorbar(t_center_lc_upper, flux_lc_upper, xerr=(t_bin_lc_upper)/2., fmt=color_lc, linestyle="None", elinewidth=1, capsize=0)
-
-       flux_lc_upper_min = min(flux_lc_upper)
-       flux_lc_upper_max = max(flux_lc_upper)
-       arrow_l = (flux_lc_upper_max - flux_lc_upper_min)/50  
-       ax_lc.errorbar(t_center_lc_upper, flux_lc_upper-arrow_l, yerr=arrow_l, fmt=color_lc, linestyle="None", elinewidth=1, lolims=True)
-
-    plt.text(0.05, 0.9 - jlc*0.05, lc_label, transform=ax_lc.transAxes, color=color_lc, size = 14)
-"""
 
 filename_png = out_name + '.png'
 plt.grid()
