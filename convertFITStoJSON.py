@@ -3,7 +3,7 @@
  ---------------------------------------------------------------------------------
  Function to convert a FITS file to a JSON file
  ---------------------------------------------------------------------------------
- copyright            : (C) 2016 Valentina Fioretti
+ Author               : 2016 Valentina Fioretti
  email                : fioretti@iasfbo.inaf.it
  ----------------------------------------------
  Usage:
