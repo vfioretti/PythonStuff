@@ -36,6 +36,12 @@ import matplotlib.pyplot as plt
 
 import sys
 
+try:
+    # Python 2
+    xrange
+except NameError:
+    # Python 3, xrange is now named range
+    xrange = range
 
 # Import the input parameters
 arg_list = sys.argv
